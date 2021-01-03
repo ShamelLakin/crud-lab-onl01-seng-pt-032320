@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 
 class Review extends Component {
-
+  
+  handleDelete = (event) => {
+    event.preventDefault()
+    this.props.deleteReview({
+      id: this.props.review.id,
+      restaurantId: this.props.review.restaurantId
+    })
+  }
   render() {
     const { review } = this.props;
 
@@ -10,7 +17,7 @@ class Review extends Component {
         <li>
           {review.text}
         </li>
-        <button> X </button>
+        <button onClick={this.handleDelete}> X </button>
       </div>
     );
   }
